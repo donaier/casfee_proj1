@@ -2,6 +2,8 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Note App</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
   <script src="scripts/index.js" type="module"></script>
@@ -9,7 +11,66 @@
   <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-<h1>Note App</h1>
+  <header>
+    <img src="../public/assets/avatar.svg" alt="avatar" class="avatar">
+    <div class="header-right">
+      <form action="">
+        <select name="styling" id="styling">
+          <option value="flat">Flat</option>
+          <option value="fancy">Fancy</option>
+        </select>
+        <select name="ordering" id="ordering">
+          <option value="name_asc">Name ASC</option>
+          <option value="name_desc">Name DESC</option>
+          <option value="due_asc">DueDate ASC</option>
+          <option value="due_desc">DueDate DESC</option>
+          <option value="created_asc">CreationDate ASC</option>
+          <option value="created_desc">CreationDate DESC</option>
+          <option value="importance_asc">Importance ASC</option>
+          <option value="importance_desc">Importance DESC</option>
+        </select>
+        <input type="checkbox" name="filter_completed" id="filterCompleted">
+        <label for="filterCompleted">Filter Completed</label>
+      </form>
+      <nav>
+        <button>werk</button>
+        <button>ost / hsr</button>
+        <button>velo</button>
+        <button>prvt</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h1>proj:Project1</h1>
+      <ul>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+      </ul>
+    </section>
+    <section>
+      <h1>proj:Project2</h1>
+      <ul>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+      </ul>
+    </section>
+    <section>
+      <h1>info:Intern</h1>
+      <ul>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+      </ul>
+    </section>
+  </main>
 
 </body>
 </html>

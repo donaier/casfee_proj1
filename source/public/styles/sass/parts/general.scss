@@ -1,0 +1,26 @@
+:root {
+  --bg: #{$flatBg};
+  --clr: #{$flatClr};
+
+  --headerBg: #{$flatHeaderBg};
+  --headerAccent: #{$flatHeaderAccent};
+}
+
+body {
+  margin: 0;
+
+  background-color: var(--bg);
+  color: var(--clr);
+}
+
+main {
+  margin-top: 120px;
+
+  display: flex;
+  flex-direction: column;
+
+  section {
+    width: 50vw;
+    margin: 0 auto;
+  }
+}
