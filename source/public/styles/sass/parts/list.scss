@@ -33,10 +33,14 @@ main section ul {
       right: 1rem;
     }
 
-    &[data-importance="1"]::after { content: '×'; }
-    &[data-importance="2"]::after { content: '××'; }
-    &[data-importance="3"]::after { content: '×××'; }
-    &[data-importance="4"]::after { content: '××××'; }
-    &[data-importance="5"]::after { content: '×××××'; }
+    &:after { content: '\0000D7'; opacity: .3; }
+    &[data-importance="2"]::after { content: '\0000D7\0000D7'; opacity: .4; }
+    &[data-importance="3"]::after { content: '\0000D7\0000D7\0000D7'; opacity: .5; }
+    &[data-importance="4"]::after { content: '\0000D7\0000D7\0000D7\0000D7'; opacity: .7; }
+    &[data-importance="5"]::after { content: '\0000D7\0000D7\0000D7\0000D7\0000D7'; opacity: .9; }
+    &[data-importance="5"] {
+      color: var(--clrLoud);
+      font-weight: 700;
+    }
   }
 }

@@ -1,4 +1,3 @@
-@charset "UTF-8";
 :root {
   --bg: #212121;
   --clr: #CCC;
@@ -114,13 +113,21 @@ main section ul {
       color: var(--clrAccent);
       position: absolute;
       right: 1rem; }
-    main section ul li[data-importance="1"]::after {
-      content: '×'; }
+    main section ul li:after {
+      content: '\0000D7';
+      opacity: .3; }
     main section ul li[data-importance="2"]::after {
-      content: '××'; }
+      content: '\0000D7\0000D7';
+      opacity: .4; }
     main section ul li[data-importance="3"]::after {
-      content: '×××'; }
+      content: '\0000D7\0000D7\0000D7';
+      opacity: .5; }
     main section ul li[data-importance="4"]::after {
-      content: '××××'; }
+      content: '\0000D7\0000D7\0000D7\0000D7';
+      opacity: .7; }
     main section ul li[data-importance="5"]::after {
-      content: '×××××'; }
+      content: '\0000D7\0000D7\0000D7\0000D7\0000D7';
+      opacity: .9; }
+    main section ul li[data-importance="5"] {
+      color: var(--clrLoud);
+      font-weight: 700; }
