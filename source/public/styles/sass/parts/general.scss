@@ -1,9 +1,5 @@
-:root {
-  --bg: #{$flatBg};
-  --clr: #{$flatClr};
-
-  --headerBg: #{$flatHeaderBg};
-  --headerAccent: #{$flatHeaderAccent};
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -14,13 +10,18 @@ body {
 }
 
 main {
-  margin-top: 120px;
+  @media screen and (min-width: $mobileMax) {
+    margin-top: 120px;
+  }
 
   display: flex;
   flex-direction: column;
 
   section {
-    width: 50vw;
-    margin: 0 auto;
+    width: Min(800px, 94vw);
+    margin: .5rem auto;
+
+    background: var(--clrComp);
+    box-shadow: 0 0 .5rem .3rem var(--clrBg);
   }
 }

@@ -1,4 +1,21 @@
 $flatBg: #212121;
-$flatClr: #C2C2C2;
-$flatHeaderBg: #353535;
-$flatHeaderAccent: #454545;
+$flatClr: #CCC;
+$flatClrBg: #353535;
+$flatComp: #454545;
+$flatLoud: #FFF;
+$flatAccent: #F2565D;
+
+$mobileMax: 720px;
+
+
+:root {
+  --bg: #{$flatBg};
+  --clr: #{$flatClr};
+
+  --clrBg: #{$flatClrBg};
+  --clrComp: #{$flatComp};
+  --clrCompLight: #{lighten($flatComp, 5%)};
+  --clrLoud: #{$flatLoud};
+  --clrAccent: #{$flatAccent};
+  --clrAccentDark: #{darken(desaturate($flatAccent, 50%), 30%)};
+}

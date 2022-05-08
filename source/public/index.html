@@ -8,12 +8,51 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU=" crossorigin="anonymous" defer></script>
   <script src="scripts/index.js" type="module"></script>
 
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
   <header>
     <img src="../public/assets/avatar.svg" alt="avatar" class="avatar">
-    <div class="header-right">
+    <nav>
+      <a href="" class="active">werk</a>
+      <a href="">ost / hsr</a>
+      <a href="">velo</a>
+      <a href="">prvt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h1><span>proj</span>Project1</h1>
+      <ul>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+      </ul>
+    </section>
+    <section>
+      <h1><span>proj</span>Project2</h1>
+      <ul>
+        <li>todo content + buttons</li>
+        <li>todo content + buttons</li>
+        <li data-completed="true">todo content + buttons</li>
+        <li data-completed="true">todo content + buttons</li>
+        <li>todo content + buttons</li>
+      </ul>
+    </section>
+    <section>
+      <h1><span>info</span>Intern</h1>
+      <ul>
+        <li data-importance="1">todo content + buttons</li>
+        <li data-importance="2">todo content + buttons</li>
+        <li data-importance="3">todo content + buttons</li>
+        <li data-importance="4">todo content + buttons</li>
+        <li data-importance="5">todo content + buttons</li>
+      </ul>
+    </section>
+
+    <section class="ost-criteria">
       <form action="">
         <select name="styling" id="styling">
           <option value="flat">Flat</option>
@@ -32,45 +71,7 @@
         <input type="checkbox" name="filter_completed" id="filterCompleted">
         <label for="filterCompleted">Filter Completed</label>
       </form>
-      <nav>
-        <button>werk</button>
-        <button>ost / hsr</button>
-        <button>velo</button>
-        <button>prvt</button>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section>
-      <h1>proj:Project1</h1>
-      <ul>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-      </ul>
-    </section>
-    <section>
-      <h1>proj:Project2</h1>
-      <ul>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-      </ul>
-    </section>
-    <section>
-      <h1>info:Intern</h1>
-      <ul>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-        <li>todo content + buttons</li>
-      </ul>
     </section>
   </main>
-
 </body>
 </html>
