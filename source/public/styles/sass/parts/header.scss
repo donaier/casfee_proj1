@@ -22,6 +22,7 @@ header {
     padding: .5rem 1rem;
 
     a {
+      position: relative;
       text-align: center;
       padding: .4rem 1.2rem;
       margin: 0 .2rem;
@@ -32,6 +33,13 @@ header {
       }
       &.active {
         color: var(--clrAccent);
+        &:after {
+          content: '\0000D7';
+          position: absolute;
+          bottom: -9px;
+          width: 100%;
+          left: 0;
+        }
       }
     }
   }

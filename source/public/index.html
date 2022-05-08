@@ -15,8 +15,8 @@
   <header>
     <img src="../public/assets/avatar.svg" alt="avatar" class="avatar">
     <nav>
-      <a href="" class="active">werk</a>
-      <a href="">ost / hsr</a>
+      <a href="">werk</a>
+      <a href="" class="active">ost/hsr</a>
       <a href="">velo</a>
       <a href="">prvt</a>
     </nav>
@@ -44,20 +44,19 @@
     <section>
       <h1><span>info</span>Intern</h1>
       <ul>
-        <li data-importance="1">wenns dann noch zeit hat</li>
+        <li data-importance="1" data-due-at="26/06/2022">wenns dann noch zeit hat <span>26.06 '22</span></li>
         <li data-importance="5">das sollte das erste sein zum wahrnehmen</li>
-        <li data-importance="2">wäre schon gut zu haben</li>
-        <li data-importance="3">ziemlich wichtig</li>
+        <li data-importance="2" data-completed="true">wäre schon gut zu haben</li>
+        <li data-importance="3" data-due-at="12/06/2022">ziemlich wichtig <span>12.06 '22</span></li>
         <li data-importance="4">besser als nächstes machen</li>
       </ul>
     </section>
 
-    <section class="ost-criteria">
-      <form action="">
-        <select name="styling" id="styling">
-          <option value="flat">Flat</option>
-          <option value="fancy">Fancy</option>
-        </select>
+    <section class="settings">
+      <p>
+        this board will
+        <span class="toggle">show</span>
+        completed items and sort them by
         <select name="ordering" id="ordering">
           <option value="name_asc">Name ASC</option>
           <option value="name_desc">Name DESC</option>
@@ -68,9 +67,15 @@
           <option value="importance_asc">Importance ASC</option>
           <option value="importance_desc">Importance DESC</option>
         </select>
-        <input type="checkbox" name="filter_completed" id="filterCompleted">
-        <label for="filterCompleted">Filter Completed</label>
-      </form>
+      </p>
+      <p>
+        it is enjoyed in the
+        <select name="styling" id="styling">
+          <option value="flat">Flat</option>
+          <option value="fancy">Fancy</option>
+        </select>
+        style
+      </p>
     </section>
   </main>
 </body>

@@ -66,6 +66,7 @@ header {
     justify-content: end;
     padding: .5rem 1rem; }
     header nav a {
+      position: relative;
       text-align: center;
       padding: .4rem 1.2rem;
       margin: 0 .2rem;
@@ -74,6 +75,12 @@ header {
         background-color: var(--clrComp); }
       header nav a.active {
         color: var(--clrAccent); }
+        header nav a.active:after {
+          content: '\0000D7';
+          position: absolute;
+          bottom: -9px;
+          width: 100%;
+          left: 0; }
   @media screen and (max-width: 720px) {
     header {
       position: relative;
@@ -92,11 +99,13 @@ main section ul {
   padding: 0 .2rem; }
   main section ul li {
     position: relative;
-    padding: .2rem .5rem;
+    padding: .2rem 9rem .2rem .5rem;
     margin: .25rem .5rem;
     transition: box-shadow .4s ease; }
     main section ul li:hover {
       box-shadow: 0 0 0.5rem 0.1rem var(--clrCompLight); }
+      main section ul li:hover:after, main section ul li:hover span {
+        opacity: .9 !important; }
     main section ul li[data-completed] {
       opacity: .6; }
     main section ul li:hover::before, main section ul li[data-completed]::before {
@@ -110,12 +119,12 @@ main section ul {
       border: 2px solid var(--clrAccent);
       margin: 0 .75rem -5px 0; }
     main section ul li:after {
-      color: var(--clrAccent);
-      position: absolute;
-      right: 1rem; }
-    main section ul li:after {
       content: '\0000D7';
-      opacity: .3; }
+      position: absolute;
+      right: 1rem;
+      color: var(--clrAccent);
+      opacity: .3;
+      transition: opacity .4s ease; }
     main section ul li[data-importance="2"]::after {
       content: '\0000D7\0000D7';
       opacity: .4; }
@@ -131,3 +140,28 @@ main section ul {
     main section ul li[data-importance="5"] {
       color: var(--clrLoud);
       font-weight: 700; }
+    main section ul li span {
+      font-size: 80%;
+      font-weight: 700;
+      position: absolute;
+      right: 5rem;
+      top: 5px;
+      opacity: .25;
+      transition: opacity .4s ease; }
+
+section.settings {
+  margin-top: 4rem;
+  padding: 1rem;
+  text-align: center; }
+  section.settings select, section.settings span.toggle {
+    font-weight: 700;
+    font-size: 1rem;
+    background-color: var(--clrCompLight);
+    padding: .2rem .5rem;
+    border: none;
+    color: var(--clr);
+    cursor: default;
+    opacity: .7;
+    transition: opacity .2s ease; }
+    section.settings select:hover, section.settings span.toggle:hover {
+      opacity: 1; }

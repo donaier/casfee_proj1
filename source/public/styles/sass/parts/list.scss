@@ -4,12 +4,15 @@ main section ul {
 
   li {
     position: relative;
-    padding: .2rem .5rem;
+    padding: .2rem 9rem .2rem .5rem;
     margin: .25rem .5rem;
     transition: box-shadow .4s ease;
 
     &:hover {
       box-shadow: 0 0 .5rem .1rem var(--clrCompLight);
+      &:after, span {
+        opacity: .9 !important; // i stand by that !important
+      }
     }
     &[data-completed] {
       opacity: .6;
@@ -28,12 +31,14 @@ main section ul {
       margin: 0 .75rem -5px 0;
     }
     &:after {
-      color: var(--clrAccent);
+      content: '\0000D7';
       position: absolute;
       right: 1rem;
+      color: var(--clrAccent);
+      opacity: .3;
+      transition: opacity .4s ease;
     }
 
-    &:after { content: '\0000D7'; opacity: .3; }
     &[data-importance="2"]::after { content: '\0000D7\0000D7'; opacity: .4; }
     &[data-importance="3"]::after { content: '\0000D7\0000D7\0000D7'; opacity: .5; }
     &[data-importance="4"]::after { content: '\0000D7\0000D7\0000D7\0000D7'; opacity: .7; }
@@ -41,6 +46,16 @@ main section ul {
     &[data-importance="5"] {
       color: var(--clrLoud);
       font-weight: 700;
+    }
+
+    span { //date
+      font-size: 80%;
+      font-weight: 700;
+      position: absolute;
+      right: 5rem;
+      top: 5px;
+      opacity: .25;
+      transition: opacity .4s ease;
     }
   }
 }
