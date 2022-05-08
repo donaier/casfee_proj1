@@ -81,6 +81,11 @@ header {
           bottom: -9px;
           width: 100%;
           left: 0; }
+          @media screen and (max-width: 720px) {
+            header nav a.active:after {
+              left: -5px;
+              width: unset;
+              bottom: unset; } }
   @media screen and (max-width: 720px) {
     header {
       position: relative;
@@ -99,7 +104,7 @@ main section ul {
   padding: 0 .2rem; }
   main section ul li {
     position: relative;
-    padding: .2rem 9rem .2rem .5rem;
+    padding: .2rem 9rem .2rem 1.75rem;
     margin: .25rem .5rem;
     transition: box-shadow .4s ease; }
     main section ul li:hover {
@@ -112,7 +117,8 @@ main section ul {
       background-color: var(--clrAccentDark); }
     main section ul li:before {
       content: '';
-      display: inline-block;
+      position: absolute;
+      left: 0;
       height: 1rem;
       width: 1rem;
       border-radius: 1rem;
@@ -152,7 +158,11 @@ main section ul {
 section.settings {
   margin-top: 4rem;
   padding: 1rem;
-  text-align: center; }
+  text-align: center;
+  background-image: url("../assets/settings.svg");
+  background-repeat: no-repeat;
+  background-position: -3% -15%;
+  background-size: 10%; }
   section.settings select, section.settings span.toggle {
     font-weight: 700;
     font-size: 1rem;

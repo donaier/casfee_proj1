@@ -39,6 +39,11 @@ header {
           bottom: -9px;
           width: 100%;
           left: 0;
+          @media screen and (max-width: $mobileMax) {
+            left: -5px;
+            width: unset;
+            bottom: unset;
+          }
         }
       }
     }
