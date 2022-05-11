@@ -1,5 +1,11 @@
 * {
   box-sizing: border-box;
+
+  transition:
+    background-color .4s ease,
+    color .4s ease,
+    box-shadow .4s ease,
+    border .4s ease;
 }
 
 body {
