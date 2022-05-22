@@ -21,6 +21,7 @@
       <a href="">velo</a>
       <a href="">prvt</a>
     </nav>
+    <div class="add">{<span>&times;</span>}</div>
   </header>
 
   <main>
@@ -52,6 +53,15 @@
         <li data-importance="4">besser als nächstes machen</li>
       </ul>
     </section>
+
+    <dialog id="new-item">
+      <form method="dialog">
+        <input type="text" name="text" placeholder="...?">
+        <input type="date" name="due_at">
+        <input type="range" min="1" max="5" value="1">
+        <button type="submit">Confirm</button>
+      </form>
+    </dialog>
 
     <section class="settings">
       <p>

@@ -50,6 +50,26 @@ header {
     }
   }
 
+  .add {
+    height: 100%;
+    font-size: 4rem;
+    transform: rotate(45deg);
+    position: relative;
+    top: 5rem;
+    color: var(--clrCompLight);
+    text-shadow: 0 0 10px var(--clrComp);
+    cursor: pointer;
+    
+    span {
+      color: var(--clrAccent);
+      text-shadow: none;
+    }
+
+    &:hover span {
+      color: var(--clr);
+    }
+  }
+
   @media screen and (max-width: $mobileMax) {
     position: relative;
     height: unset;
@@ -64,6 +84,10 @@ header {
         padding: .2rem .6rem;
         min-width: unset;
       }
+    }
+    .add {
+      font-size: 2.5rem;
+      top: -1rem;
     }
   }
 }

@@ -31,7 +31,11 @@ function switchStyle(evnt) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
+  // init
   switchStyle({target: {value: document.querySelector('#styling').value}})
-  document.querySelector('#styling').onchange = switchStyle;
+  document.querySelector('#new-item').showModal()
+
+  // listeners
+  document.querySelector('#styling').addEventListener('change', switchStyle);
+  document.querySelector('.add').addEventListener('click', () => {document.querySelector('#new-item').showModal()})
 });

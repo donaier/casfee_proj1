@@ -1,0 +1,48 @@
+dialog {
+  border: none;
+  width: Min(680px, 84vw);
+  background: var(--clrBg);
+  border-radius: 5px;
+  box-shadow: 0 0 .5rem var(--clrAccentDark);
+  padding: 1rem;
+
+
+  form {
+    display: grid;
+    grid-template-areas: "todo todo todo" "duedate importance submit";
+
+    input, button {
+      border: none;
+      background: var(--clrComp);
+      color: var(--clr);
+      padding: .25rem .5rem;
+    }
+    
+    input[type="text"] {
+      grid-area: todo;
+
+      border-bottom: 2px solid var(--clrAccentDark);
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      width: 100%;
+    }
+    input[type="date"] {
+      grid-area: duedate;
+      text-align: center;
+    }
+    input[type="range"] {
+      grid-area: importance;
+      width: 40%;
+      margin-left: 5%;
+
+      @media screen and (max-width: $mobileMax) { width: 90% };
+    }
+    button[type="submit"] {
+      grid-area: submit;
+
+      &:hover {
+        background: var(--clrCompLight);
+      }
+    }
+  }
+}

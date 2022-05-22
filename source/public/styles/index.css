@@ -88,6 +88,20 @@ header {
               left: -5px;
               width: unset;
               bottom: unset; } }
+  header .add {
+    height: 100%;
+    font-size: 4rem;
+    transform: rotate(45deg);
+    position: relative;
+    top: 5rem;
+    color: var(--clrCompLight);
+    text-shadow: 0 0 10px var(--clrComp);
+    cursor: pointer; }
+    header .add span {
+      color: var(--clrAccent);
+      text-shadow: none; }
+    header .add:hover span {
+      color: var(--clr); }
   @media screen and (max-width: 720px) {
     header {
       position: relative;
@@ -99,7 +113,10 @@ header {
         flex-direction: column; }
         header nav a {
           padding: .2rem .6rem;
-          min-width: unset; } }
+          min-width: unset; }
+      header .add {
+        font-size: 2.5rem;
+        top: -1rem; } }
 
 main section ul {
   list-style-type: none;
@@ -177,3 +194,39 @@ section.settings {
     transition: opacity .2s ease; }
     section.settings select:hover, section.settings span.toggle:hover {
       opacity: 1; }
+
+dialog {
+  border: none;
+  width: Min(680px, 84vw);
+  background: var(--clrBg);
+  border-radius: 5px;
+  box-shadow: 0 0 0.5rem var(--clrAccentDark);
+  padding: 1rem; }
+  dialog form {
+    display: grid;
+    grid-template-areas: "todo todo todo" "duedate importance submit"; }
+    dialog form input, dialog form button {
+      border: none;
+      background: var(--clrComp);
+      color: var(--clr);
+      padding: .25rem .5rem; }
+    dialog form input[type="text"] {
+      grid-area: todo;
+      border-bottom: 2px solid var(--clrAccentDark);
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      width: 100%; }
+    dialog form input[type="date"] {
+      grid-area: duedate;
+      text-align: center; }
+    dialog form input[type="range"] {
+      grid-area: importance;
+      width: 40%;
+      margin-left: 5%; }
+      @media screen and (max-width: 720px) {
+        dialog form input[type="range"] {
+          width: 90%; } }
+    dialog form button[type="submit"] {
+      grid-area: submit; }
+      dialog form button[type="submit"]:hover {
+        background: var(--clrCompLight); }
