@@ -1,17 +1,8 @@
-console.log("Hello World");
-
 // einfach roh für die funktionalität
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  switchStyle({target: {value: document.querySelector('#styling').value}})
-  document.querySelector('#styling').onchange = switchStyle;
-});
-
 
 function switchStyle(evnt) {
   const root = document.querySelector(':root');
-  let styles = {
+  const styles = {
     'flat': {
       '--bg': '#212121',
       '--clr': '#CCC',
@@ -34,7 +25,13 @@ function switchStyle(evnt) {
     }
   }
 
-  for (const i in styles[evnt.target.value]) {
-    root.style.setProperty(i, styles[evnt.target.value][i]);
-  }
+  Object.entries(styles[evnt.target.value]).forEach(([prop, value]) => {
+    root.style.setProperty(prop, value);
+  });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  switchStyle({target: {value: document.querySelector('#styling').value}})
+  document.querySelector('#styling').onchange = switchStyle;
+});
