@@ -16,7 +16,7 @@ function switchStyle(evnt) {
     'fancy': {
       '--bg': '#f1dca7',
       '--clr': '#222',
-      '--clrBg': '#8b5e34',
+      '--clrBg': '#edd3c4',
       '--clrComp': '#e7bc91',
       '--clrCompLight': '#f5e4d3',
       '--clrLoud': '#0194fc',

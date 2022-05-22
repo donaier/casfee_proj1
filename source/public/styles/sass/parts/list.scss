@@ -4,9 +4,10 @@ main section ul {
 
   li {
     position: relative;
-    padding: .2rem 9rem .2rem 1.75rem;
+    padding: .2rem 9rem .2rem 2rem;
     margin: .25rem .5rem;
     transition: box-shadow .4s ease;
+    border-radius: 5px;
 
     &:hover {
       box-shadow: 0 0 .5rem .1rem var(--clrCompLight);
@@ -24,12 +25,11 @@ main section ul {
     &:before {
       content: '';
       position: absolute;
-      left: 0;
+      left: .25rem;
       height: 1rem;
       width: 1rem;
       border-radius: 1rem;
-      border: 2px solid var(--clrAccent);
-      margin: 0 .75rem -5px 0;
+      border: 1px solid var(--clrAccent);
     }
     &:after {
       content: '\0000D7';
