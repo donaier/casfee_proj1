@@ -60,3 +60,7 @@ main section ul {
     }
   }
 }
+
+main.completed-hidden li[data-completed] {
+  display: none;
+}

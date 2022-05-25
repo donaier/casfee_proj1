@@ -30,12 +30,26 @@ function switchStyle(evnt) {
   });
 }
 
+function toggleCompleted(e) {
+  const toggle = e.target;
+
+  if (toggle.dataset.completed === 'show') {
+    toggle.dataset.completed = 'hide';
+    document.querySelector('main').classList.replace('completed-visible', 'completed-hidden');
+  } else {
+    toggle.dataset.completed = 'show';
+    document.querySelector('main').classList.replace('completed-hidden', 'completed-visible');
+  }
+
+  toggle.innerHTML = toggle.dataset.completed;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // init
   switchStyle({target: {value: document.querySelector('#styling').value}})
-  document.querySelector('#new-item').showModal()
 
   // listeners
   document.querySelector('#styling').addEventListener('change', switchStyle);
   document.querySelector('.add').addEventListener('click', () => {document.querySelector('#new-item').showModal()})
+  document.querySelector('.completed-toggle').addEventListener('click', toggleCompleted);
 });

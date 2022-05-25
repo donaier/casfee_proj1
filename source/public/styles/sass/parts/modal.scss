@@ -5,7 +5,11 @@ dialog {
   border-radius: 5px;
   box-shadow: 0 0 .5rem var(--clrAccentDark);
   padding: 1rem;
+  margin-top: 10%;
 
+  &::backdrop {
+    background: rgba(0,0,0,.6);
+  }
 
   form {
     display: grid;
