@@ -26,8 +26,19 @@ main {
   main section {
     width: Min(800px, 94vw);
     margin: .5rem auto;
+    padding-bottom: .5rem;
     background: var(--clrComp);
     box-shadow: 0 0 0.5rem 0.3rem var(--clrBg); }
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--clr);
+  font-size: 1rem; }
+
+h1 {
+  padding-top: 1rem; }
 
 body {
   font-family: 'Ubuntu', sans-serif; }
@@ -67,24 +78,24 @@ header {
     display: flex;
     justify-content: end;
     padding: .5rem 1rem; }
-    header nav a {
+    header nav button {
       position: relative;
       text-align: center;
       padding: .4rem 1.2rem;
       margin: 0 .2rem;
       min-width: 80px; }
-      header nav a:hover {
+      header nav button:hover {
         background-color: var(--clrComp); }
-      header nav a.active {
+      header nav button.active {
         color: var(--clrAccent); }
-        header nav a.active:after {
+        header nav button.active:after {
           content: '\0000D7';
           position: absolute;
           bottom: -9px;
           width: 100%;
           left: 0; }
           @media screen and (max-width: 720px) {
-            header nav a.active:after {
+            header nav button.active:after {
               left: -5px;
               width: unset;
               bottom: unset; } }

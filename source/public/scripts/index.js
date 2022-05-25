@@ -47,8 +47,9 @@ function toggleCompleted(e) {
 }
 
 function loadLists(board) {
+  document.querySelector('main .lists').innerHTML = '';
   getLists(board).forEach(list => {
-    document.querySelector('main').insertAdjacentHTML('afterbegin', `
+    document.querySelector('main .lists').insertAdjacentHTML('afterbegin', `
       <section>
         <h1><span>${list.category}</span>${list.title}</h1>
         <ul>
@@ -67,15 +68,19 @@ function loadBoards() {
   let activeBoard = null;
   // build nav
   getBoards().boards.forEach(board => {
-    const navLink = document.createElement('a');
+    const navLink = document.createElement('button');
 
-    navLink.href = "";
-    navLink.text = board;
+    navLink.innerText = board;
     if (board === getBoards().default) {
       navLink.classList.add('active');
       activeBoard = board;
     }
     document.querySelector('nav').appendChild(navLink)
+    navLink.addEventListener('click', () => {
+      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+      navLink.classList.add('active');
+      loadLists(board);
+    });
   });
 
   // load lists of selected board
@@ -87,7 +92,6 @@ function loadBoards() {
 document.addEventListener("DOMContentLoaded", () => {
   // init
   switchStyle({target: {value: document.querySelector('#styling').value}})
-
   loadBoards();
 
   // listeners

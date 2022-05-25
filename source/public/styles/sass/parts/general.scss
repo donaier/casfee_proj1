@@ -26,8 +26,22 @@ main {
   section {
     width: Min(800px, 94vw);
     margin: .5rem auto;
+    padding-bottom: .5rem;
 
     background: var(--clrComp);
     box-shadow: 0 0 .5rem .3rem var(--clrBg);
   }
+
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--clr);
+  font-size: 1rem;
+}
+
+h1 {
+  padding-top: 1rem;
 }

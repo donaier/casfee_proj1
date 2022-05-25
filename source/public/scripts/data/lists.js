@@ -1,6 +1,6 @@
 const lists = [
   {
-    "board": "hsr/ost",
+    "board": "werk",
     "title": "Project1",
     "category": "proj",
     "items": [
@@ -10,7 +10,7 @@ const lists = [
     ]
   },
   {
-    "board": "hsr/ost",
+    "board": "werk",
     "title": "Project2",
     "category": "proj",
     "items": [
