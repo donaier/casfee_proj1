@@ -1,6 +1,14 @@
 const lists = [
   {
     "board": "werk",
+    "items": [
+      { "text": "projekt beginnen" },
+      { "text": "mittelteil umsetzen" },
+      { "text": "abschluss machen und so ... weiteres" }
+    ]
+  },
+  {
+    "board": "werk",
     "title": "Project1",
     "category": "proj",
     "items": [
@@ -19,6 +27,12 @@ const lists = [
       { "text": "zeugs nachfragen für weiteres vorgehen", "completed": true },
       { "text": "etwas erledigen", "completed": true },
       { "text": "alles machen und kommunizieren und bewerben und teilen und ..." }
+    ]
+  },
+  {
+    "board": "hsr/ost",
+    "items": [
+      { "text": "znacht immer mitnehmen", "importance": 4 },
     ]
   },
   {

@@ -37,7 +37,7 @@ function loadLists(board) {
   getLists(board).forEach(list => {
     document.querySelector('main .lists').insertAdjacentHTML('afterbegin', `
       <section>
-        <h1><span>${list.category}</span>${list.title}</h1>
+        ${ (list.category && list.title) ? `<h1><span>${list.category}</span>${list.title}</h1>` : '<h2></h2>' }
         <ul>
           ${list.items?.map(item =>
             `<li data-importance="${item.importance}" data-due-at="${item.due_at}" ${item.completed ? 'data-completed="true"' : ''}>
