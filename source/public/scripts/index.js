@@ -1,5 +1,5 @@
 // einfach roh für die funktionalität
-import getBoards from "./data/boards.js"
+import { getBoards, toggleCompleted } from "./data/boards.js"
 import getLists from "./data/lists.js"
 
 function switchStyle(evnt) {
@@ -32,20 +32,6 @@ function switchStyle(evnt) {
   });
 }
 
-function toggleCompleted(e) {
-  const toggle = e.target;
-
-  if (toggle.dataset.completed === 'show') {
-    toggle.dataset.completed = 'hide';
-    document.querySelector('main').classList.replace('completed-visible', 'completed-hidden');
-  } else {
-    toggle.dataset.completed = 'show';
-    document.querySelector('main').classList.replace('completed-hidden', 'completed-visible');
-  }
-
-  toggle.innerHTML = toggle.dataset.completed;
-}
-
 function loadLists(board) {
   document.querySelector('main .lists').innerHTML = '';
   getLists(board).forEach(list => {
@@ -64,8 +50,15 @@ function loadLists(board) {
   });
 }
 
+function switchBoard(navLink) {
+  document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+  navLink.classList.add('active');
+  loadLists(navLink.innerText);
+}
+
 function loadBoards() {
   let activeBoard = null;
+  const nav = document.querySelector('nav');
   // build nav
   getBoards().boards.forEach(board => {
     const navLink = document.createElement('button');
@@ -75,15 +68,13 @@ function loadBoards() {
       navLink.classList.add('active');
       activeBoard = board;
     }
-    document.querySelector('nav').appendChild(navLink)
-    navLink.addEventListener('click', () => {
-      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-      navLink.classList.add('active');
-      loadLists(board);
-    });
+    nav.appendChild(navLink)
   });
+  nav.addEventListener('click', (e) => {
+    switchBoard(e.target);
+  })
 
-  // load lists of selected board
+  // load lists of default board
   if (activeBoard) {
     loadLists(activeBoard);
   }
