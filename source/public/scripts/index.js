@@ -1,4 +1,6 @@
 // einfach roh für die funktionalität
+import getBoards from "./data/boards.js"
+import getLists from "./data/lists.js"
 
 function switchStyle(evnt) {
   const root = document.querySelector(':root');
@@ -44,9 +46,49 @@ function toggleCompleted(e) {
   toggle.innerHTML = toggle.dataset.completed;
 }
 
+function loadLists(board) {
+  getLists(board).forEach(list => {
+    document.querySelector('main').insertAdjacentHTML('afterbegin', `
+      <section>
+        <h1><span>${list.category}</span>${list.title}</h1>
+        <ul>
+          ${list.items?.map(item =>
+            `<li data-importance="${item.importance}" data-due-at="${item.due_at}" ${item.completed ? 'data-completed="true"' : ''}>
+              ${item.text}${item.due_at ? `<span>${item.due_at}</span>` : ''}
+            </li>`
+          ).join("")}
+        </ul>
+      </section>
+    `)
+  });
+}
+
+function loadBoards() {
+  let activeBoard = null;
+  // build nav
+  getBoards().boards.forEach(board => {
+    const navLink = document.createElement('a');
+
+    navLink.href = "";
+    navLink.text = board;
+    if (board === getBoards().default) {
+      navLink.classList.add('active');
+      activeBoard = board;
+    }
+    document.querySelector('nav').appendChild(navLink)
+  });
+
+  // load lists of selected board
+  if (activeBoard) {
+    loadLists(activeBoard);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // init
   switchStyle({target: {value: document.querySelector('#styling').value}})
+
+  loadBoards();
 
   // listeners
   document.querySelector('#styling').addEventListener('change', switchStyle);
