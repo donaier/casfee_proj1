@@ -37,7 +37,7 @@ export default class Thngs {
   }
 
   switchBoard(navLink) {
-    document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('nav button.active').forEach(btn => btn.classList.remove('active'));
     navLink.classList.add('active');
 
     this.loadLists(navLink.innerText);
@@ -47,7 +47,7 @@ export default class Thngs {
     this.listContainer.innerHTML = '';
 
     getLists(board).forEach(list => {
-      this.listContainer.insertAdjacentHTML('afterbegin', `
+      this.listContainer.insertAdjacentHTML('beforeend', `
         <section>
           ${ (list.category && list.title) ? `<h1><span>${list.category}</span>${list.title}</h1>` : '<h2></h2>' }
           <ul>
@@ -63,8 +63,6 @@ export default class Thngs {
   }
 
   toggleCompleted(e) {
-    const toggle = e.target;
-  
     if (this.completedVisibility === 'show') {
       this.completedVisibility = 'hide';
       document.querySelector('main').classList.replace('completed-visible', 'completed-hidden');
@@ -73,6 +71,6 @@ export default class Thngs {
       document.querySelector('main').classList.replace('completed-hidden', 'completed-visible');
     }
   
-    toggle.innerHTML = this.completedVisibility;
+    e.target.innerHTML = this.completedVisibility;
   }
 }

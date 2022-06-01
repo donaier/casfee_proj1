@@ -50,5 +50,5 @@ const lists = [
 ]
 
 export default function getLists(board) {
-  return lists.filter(l => l.board === board).reverse();
+  return lists.filter(l => l.board === board);
 }
