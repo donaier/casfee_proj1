@@ -29,6 +29,7 @@ export default class Thngs {
     document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
     document.querySelector('#ordering').addEventListener('change', this.setOrdering.bind(this));
     document.querySelector('.add').addEventListener('click', () => {
+      this.createForm.querySelector('input[name="list"').value = '';
       document.querySelector('#new-item h3').textContent = '';
       document.querySelector('#new-item').showModal();
     });
@@ -46,6 +47,7 @@ export default class Thngs {
 
     document.querySelectorAll('.add.list-add').forEach(addBtn =>
       addBtn.addEventListener('click', (e) => {
+        this.createForm.querySelector('input[name="list"').value = e.target.closest('.add').dataset.list;
         document.querySelector('#new-item h3').textContent = e.target.closest('.add').dataset.list;
         document.querySelector('#new-item').showModal();
       })
@@ -72,8 +74,8 @@ export default class Thngs {
     if (this.createForm.querySelector('input[type="text"]').value.trim()) {
       const data = new FormData(this.createForm);
       const newItem = {
-        board: '',
-        list: '',
+        board: this.board,
+        list: data.get('list'),
         item: {
           text: data.get('text'),
           due_at: data.get('due_at'),
