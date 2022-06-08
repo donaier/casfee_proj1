@@ -22,63 +22,57 @@ export default class Thngs {
 
     this.boards = getBoards();
     this.activeBoard = this.boards.default;
+    this.lists = [];
+    this.createForm = document.querySelector('form#create-item');
 
-
-    this.listContainer = document.querySelector('main .lists');
-    this.completedVisibility = 'hide';
-
-    // StyleSwitcher.init();
-
-    this.buildNav();
-
-
-  }
-
-  initListeners() {
     document.querySelector('.add').addEventListener('click', () => {document.querySelector('#new-item').showModal()})
-
-    // to painter - nav
-    document.querySelector('nav').addEventListener('click', (e) => { this.switchBoard(e.target); })
+    document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
   }
+
 
   buildNav() {
-    const nav = document.querySelector('nav');
-    // build nav
-    this.boards.boards.forEach(board => {
-      const navLink = document.createElement('button');
-
-      navLink.innerText = board;
-      if (board === this.activeBoard) { navLink.classList.add('active') };
-
-      nav.appendChild(navLink)
-    });
-
-    this.loadLists(this.activeBoard);
+    this.painter.paintNav(this.boards);
+    this.painter.nav.addEventListener('click', this.switchBoard.bind(this));
   }
 
-  switchBoard(navLink) {
-    document.querySelectorAll('nav button.active').forEach(btn => btn.classList.remove('active'));
-    navLink.classList.add('active');
-
-    this.loadLists(navLink.innerText);
+  buildBoard() {
+    this.lists = getLists(this.activeBoard);
+    this.painter.paintBoard(this.lists);
   }
 
-  loadLists(board) {
-    this.listContainer.innerHTML = '';
+  switchBoard(e) {
+    if (e.target.nodeName === 'BUTTON') {
+      document.querySelectorAll('nav button.active').forEach(btn => btn.classList.remove('active'));
+      e.target.classList.add('active');
 
-    getLists(board).forEach(list => {
-      this.listContainer.insertAdjacentHTML('beforeend', `
-        <section>
-          ${ (list.category && list.title) ? `<h1><span>${list.category}</span>${list.title}</h1>` : '<h2></h2>' }
-          <ul>
-            ${list.items?.map(item =>
-              `<li data-importance="${item.importance}" data-due-at="${item.due_at}" ${item.completed ? 'data-completed="true"' : ''}>
-                ${item.text}${item.due_at ? `<span>${item.due_at}</span>` : ''}
-              </li>`
-            ).join("")}
-          </ul>
-        </section>
-      `)
-    });
+      this.activeBoard = e.target.innerText;
+      this.buildBoard();
+    }
+  }
+
+  setOrdering(e) {
+
+  }
+
+  // item creation
+  createItem(e) {
+    if (this.createForm.querySelector('input[type="text"]').value.trim()) {
+      const data = new FormData(this.createForm);
+      const newItem = {
+        board: '',
+        list: '',
+        item: {
+          text: data.get('text'),
+          due_at: data.get('due_at'),
+          importance: data.get('importance')
+        }
+      };
+
+      // save newItem somehow :) and then maybe buildBoard() again
+
+    } else {
+      e.preventDefault();
+      this.createForm.classList.add('invalid');
+    }
   }
 }

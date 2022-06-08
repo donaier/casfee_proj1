@@ -20,15 +20,24 @@ dialog {
       background: var(--clrComp);
       color: var(--clr);
       padding: .25rem .5rem;
+
+      &:focus-visible {
+        outline: none;
+      }
     }
-    
+
     input[type="text"] {
       grid-area: todo;
 
-      border-bottom: 2px solid var(--clrAccentDark);
+      border-width: 2px;
+      border-style: solid;
+      border-color: transparent;
+      border-bottom-color: var(--clrAccentDark);
       font-size: 1.4rem;
       margin-bottom: 1.2rem;
       width: 100%;
+
+      transition: border-color 1s ease;
     }
     input[type="date"] {
       grid-area: duedate;
@@ -46,6 +55,12 @@ dialog {
 
       &:hover {
         background: var(--clrCompLight);
+      }
+    }
+
+    &.invalid {
+      input[type="text"] {
+        border-color: var(--clrAccentDark);
       }
     }
   }
