@@ -66,6 +66,7 @@ export default class Painter {
               </li>`
             ).join("")}
           </ul>
+          ${list.title ? `<div class="add list-add" data-list="${list.title}"><span>&times;</span></div>` : ''}
         </section>
       `)
     });

@@ -17,6 +17,7 @@ main {
     width: Min(800px, 94vw);
     margin: .5rem auto;
     padding-bottom: .5rem;
+    position: relative;
     background: var(--clrComp);
     box-shadow: 0 0 0.5rem 0.3rem var(--clrBg); }
 
@@ -32,6 +33,34 @@ h1 {
 
 h2 {
   padding-top: .5rem; }
+
+h3 {
+  color: var(--clr);
+  position: absolute;
+  top: -2rem;
+  width: 100%;
+  text-align: center; }
+
+.add {
+  height: 100%;
+  font-size: 4rem;
+  transform: rotate(45deg);
+  position: relative;
+  top: 5rem;
+  color: var(--clrCompLight);
+  text-shadow: 0 0 10px var(--clrComp);
+  cursor: pointer; }
+  .add span {
+    color: var(--clrAccent);
+    text-shadow: none; }
+  .add:hover span {
+    color: var(--clr); }
+  .add.list-add {
+    height: unset;
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    right: .5rem; }
 
 body {
   font-family: 'Ubuntu', sans-serif; }
@@ -92,20 +121,6 @@ header {
               left: -5px;
               width: unset;
               bottom: unset; } }
-  header .add {
-    height: 100%;
-    font-size: 4rem;
-    transform: rotate(45deg);
-    position: relative;
-    top: 5rem;
-    color: var(--clrCompLight);
-    text-shadow: 0 0 10px var(--clrComp);
-    cursor: pointer; }
-    header .add span {
-      color: var(--clrAccent);
-      text-shadow: none; }
-    header .add:hover span {
-      color: var(--clr); }
   @media screen and (max-width: 720px) {
     header {
       position: relative;
@@ -209,7 +224,8 @@ dialog {
   border-radius: 5px;
   box-shadow: 0 0 0.5rem var(--clrAccentDark);
   padding: 1rem;
-  margin-top: 10%; }
+  margin-top: 10%;
+  overflow: visible; }
   dialog::backdrop {
     background: rgba(0, 0, 0, 0.6); }
   dialog form {

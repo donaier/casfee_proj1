@@ -22,13 +22,16 @@ export default class Thngs {
 
     this.boards = getBoards();
     this.activeBoard = this.boards.default;
+    this.ordering = document.querySelector('#ordering')?.value;
     this.lists = [];
     this.createForm = document.querySelector('form#create-item');
-    this.ordering = document.querySelector('#ordering')?.value;
 
-    document.querySelector('.add').addEventListener('click', () => {document.querySelector('#new-item').showModal()})
     document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
     document.querySelector('#ordering').addEventListener('change', this.setOrdering.bind(this));
+    document.querySelector('.add').addEventListener('click', () => {
+      document.querySelector('#new-item h3').textContent = '';
+      document.querySelector('#new-item').showModal();
+    });
   }
 
 
@@ -40,6 +43,13 @@ export default class Thngs {
   buildBoard() {
     this.lists = getLists(this.activeBoard, this.ordering);
     this.painter.paintBoard(this.lists);
+
+    document.querySelectorAll('.add.list-add').forEach(addBtn =>
+      addBtn.addEventListener('click', (e) => {
+        document.querySelector('#new-item h3').textContent = e.target.closest('.add').dataset.list;
+        document.querySelector('#new-item').showModal();
+      })
+    );
   }
 
   switchBoard(e) {
@@ -72,7 +82,6 @@ export default class Thngs {
       };
 
       // save newItem somehow :) and then maybe buildBoard() again
-
     } else {
       e.preventDefault();
       this.createForm.classList.add('invalid');

@@ -27,6 +27,7 @@ main {
     width: Min(800px, 94vw);
     margin: .5rem auto;
     padding-bottom: .5rem;
+    position: relative;
 
     background: var(--clrComp);
     box-shadow: 0 0 .5rem .3rem var(--clrBg);
@@ -47,4 +48,39 @@ h1 {
 }
 h2 {
   padding-top: .5rem;
+}
+h3 {
+  color: var(--clr);
+  position: absolute;
+  top: -2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.add {
+  height: 100%;
+  font-size: 4rem;
+  transform: rotate(45deg);
+  position: relative;
+  top: 5rem;
+  color: var(--clrCompLight);
+  text-shadow: 0 0 10px var(--clrComp);
+  cursor: pointer;
+
+  span {
+    color: var(--clrAccent);
+    text-shadow: none;
+  }
+
+  &:hover span {
+    color: var(--clr);
+  }
+
+  &.list-add {
+    height: unset;
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    right: .5rem;
+  }
 }
