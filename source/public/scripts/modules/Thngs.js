@@ -24,9 +24,11 @@ export default class Thngs {
     this.activeBoard = this.boards.default;
     this.lists = [];
     this.createForm = document.querySelector('form#create-item');
+    this.ordering = document.querySelector('#ordering')?.value;
 
     document.querySelector('.add').addEventListener('click', () => {document.querySelector('#new-item').showModal()})
     document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
+    document.querySelector('#ordering').addEventListener('change', this.setOrdering.bind(this));
   }
 
 
@@ -36,7 +38,7 @@ export default class Thngs {
   }
 
   buildBoard() {
-    this.lists = getLists(this.activeBoard);
+    this.lists = getLists(this.activeBoard, this.ordering);
     this.painter.paintBoard(this.lists);
   }
 
@@ -51,7 +53,8 @@ export default class Thngs {
   }
 
   setOrdering(e) {
-
+    this.ordering = e.target.value;
+    this.buildBoard();
   }
 
   // item creation

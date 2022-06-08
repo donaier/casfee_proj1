@@ -49,6 +49,54 @@ const lists = [
   }
 ]
 
-export default function getLists(board) {
-  return lists.filter(l => l.board === board);
+export default function getLists(board, ordering) {
+  const nLists = lists.filter(l => l.board === board);
+
+  switch (ordering) {
+    case 'name_asc':
+      nLists.forEach((list, i) => {
+        nLists[i].items = list.items.sort((a,b) => a.text < b.text ? -1 : 1)
+      });
+      break;
+    case 'name_desc':
+      nLists.forEach((list, i) => {
+        nLists[i].items = list.items.sort((a,b) => a.text > b.text ? -1 : 1)
+      });
+      break;
+    case 'due_asc':
+      nLists.forEach((list, i) => {
+        nLists[i].items = list.items.sort((a,b) => !a.due_at || a.due_at > b.due_at ? 1 : -1);
+      });
+      break;
+    case 'due_desc':
+      nLists.forEach((list, i) => {
+        nLists[i].items = list.items.sort((a,b) => !a.due_at || a.due_at < b.due_at ? 1 : -1);
+      });
+      break;
+    case 'created_asc':
+      nLists.forEach((list, i) => {
+        nLists[i].items = list.items.sort((a,b) => a.created_at < b.created_at ? -1 : 1);
+      });
+      break;
+    case 'created_desc':
+      nLists.forEach((list, i) => {
+        nLists[i].items = list.items.sort((a,b) => a.created_at > b.created_at ? -1 : 1);
+      });
+      break;
+    case 'importance_asc':
+      nLists.forEach((list, i) => {
+        nLists[i].items = list.items.sort((a,b) => a.importance < b.importance ? -1 : 1)
+      });
+      break;
+    case 'importance_desc':
+      nLists.forEach((list, i) => {
+        nLists[i].items = list.items.sort((a,b) => a.importance > b.importance ? -1 : 1)
+      });
+      break;
+
+    default:
+      break;
+  }
+
+  return nLists;
 }
