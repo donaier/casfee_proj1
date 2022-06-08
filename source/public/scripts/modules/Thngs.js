@@ -1,23 +1,43 @@
 import getBoards from "../data/boards.js";
 import getLists from "../data/lists.js"
-import StyleSwitcher from "./StyleSwitcher.js";
+
+import Painter from "./Painter.js";
 
 export default class Thngs {
   constructor() {
+    this.painter = new Painter({
+      completedVisibility: 'hide',
+      styles: ['flat', 'fancy'],
+      orderOptions: [
+        {value: 'name_asc', label: 'Name ASC'},
+        {value: 'name_desc', label: 'Name DESC'},
+        {value: 'due_asc', label: 'DueDate ASC'},
+        {value: 'due_desc', label: 'DueDate DESC'},
+        {value: 'created_asc', label: 'CreationDate ASC'},
+        {value: 'created_desc', label: 'CreationDate DESC'},
+        {value: 'importance_asc', label: 'Importance ASC'},
+        {value: 'importance_desc', label: 'Importance DESC'},
+      ]
+    })
+
     this.boards = getBoards();
     this.activeBoard = this.boards.default;
+
+
     this.listContainer = document.querySelector('main .lists');
     this.completedVisibility = 'hide';
 
-    StyleSwitcher.init();
+    // StyleSwitcher.init();
 
     this.buildNav();
+
+
   }
 
   initListeners() {
-    document.querySelector('#styling').addEventListener('change', (e) => StyleSwitcher.switch(e.target.value));
     document.querySelector('.add').addEventListener('click', () => {document.querySelector('#new-item').showModal()})
-    document.querySelector('.completed-toggle').addEventListener('click', this.toggleCompleted);
+
+    // to painter - nav
     document.querySelector('nav').addEventListener('click', (e) => { this.switchBoard(e.target); })
   }
 
@@ -32,7 +52,7 @@ export default class Thngs {
 
       nav.appendChild(navLink)
     });
-    
+
     this.loadLists(this.activeBoard);
   }
 
@@ -60,17 +80,5 @@ export default class Thngs {
         </section>
       `)
     });
-  }
-
-  toggleCompleted(e) {
-    if (this.completedVisibility === 'show') {
-      this.completedVisibility = 'hide';
-      document.querySelector('main').classList.replace('completed-visible', 'completed-hidden');
-    } else {
-      this.completedVisibility = 'show';
-      document.querySelector('main').classList.replace('completed-hidden', 'completed-visible');
-    }
-  
-    e.target.innerHTML = this.completedVisibility;
   }
 }
