@@ -44,33 +44,33 @@ export default class Painter {
   }
 
   paintNav(boards) {
-    boards.boards.forEach(board => {
+    boards.forEach(board => {
       const navLink = document.createElement('button');
 
-      navLink.innerText = board;
-      if (board === boards.default) { navLink.classList.add('active') };
+      navLink.innerText = board.name;
+      if (board.default) { navLink.classList.add('active') };
       this.nav.appendChild(navLink)
     });
   }
 
-  paintBoard(lists) {
-    this.listContainer.innerHTML = '';
-    lists.forEach(list => {
-      this.listContainer.insertAdjacentHTML('beforeend', `
-        <section>
-          ${ (list.category && list.title) ? `<h1><span>${list.category}</span>${list.title}</h1>` : '<h2></h2>' }
-          <ul>
-            ${list.items?.map(item =>
-              `<li data-importance="${item.importance}" data-due-at="${item.due_at}" ${item.completed ? 'data-completed="true"' : ''}>
-                ${item.text}${item.due_at ? `<span>${item.due_at}</span>` : ''}
-              </li>`
-            ).join("")}
-          </ul>
-          ${list.title ? `<div class="add list-add" data-list="${list.title}"><span>&times;</span></div>` : ''}
-        </section>
-      `)
-    });
-  }
+  // paintBoard(lists) {
+  //   this.listContainer.innerHTML = '';
+  //   lists.forEach(list => {
+  //     this.listContainer.insertAdjacentHTML('beforeend', `
+  //       <section>
+  //         ${ (list.category && list.title) ? `<h1><span>${list.category}</span>${list.title}</h1>` : '<h2></h2>' }
+  //         <ul>
+  //           ${list.items?.map(item =>
+  //             `<li data-importance="${item.importance}" data-due-at="${item.due_at}" ${item.completed ? 'data-completed="true"' : ''}>
+  //               ${item.text}${item.due_at ? `<span>${item.due_at}</span>` : ''}
+  //             </li>`
+  //           ).join("")}
+  //         </ul>
+  //         ${list.title ? `<div class="add list-add" data-list="${list.title}"><span>&times;</span></div>` : ''}
+  //       </section>
+  //     `)
+  //   });
+  // }
 
   toggleCompletedVisibility(e) {
     if (this.settings.completedVisibility === 'show') {
