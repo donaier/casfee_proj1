@@ -53,24 +53,24 @@ export default class Painter {
     });
   }
 
-  // paintBoard(lists) {
-  //   this.listContainer.innerHTML = '';
-  //   lists.forEach(list => {
-  //     this.listContainer.insertAdjacentHTML('beforeend', `
-  //       <section>
-  //         ${ (list.category && list.title) ? `<h1><span>${list.category}</span>${list.title}</h1>` : '<h2></h2>' }
-  //         <ul>
-  //           ${list.items?.map(item =>
-  //             `<li data-importance="${item.importance}" data-due-at="${item.due_at}" ${item.completed ? 'data-completed="true"' : ''}>
-  //               ${item.text}${item.due_at ? `<span>${item.due_at}</span>` : ''}
-  //             </li>`
-  //           ).join("")}
-  //         </ul>
-  //         ${list.title ? `<div class="add list-add" data-list="${list.title}"><span>&times;</span></div>` : ''}
-  //       </section>
-  //     `)
-  //   });
-  // }
+  paintBoard(lists) {
+    this.listContainer.innerHTML = '';
+    lists.forEach(list => {
+      this.listContainer.insertAdjacentHTML('beforeend', `
+        <section>
+          ${ (list.category && list.name) ? `<h1><span>${list.category}</span>${list.name}</h1>` : '<h2></h2>' }
+          <ul>
+            ${list.items?.map(item =>
+              `<li data-importance="${item.importance}" data-due-at="${item.due_at}" ${item.completed ? 'data-completed="true"' : ''}>
+                ${item.text}${item.due_at ? `<span>${item.due_at}</span>` : ''}
+              </li>`
+            ).join("")}
+          </ul>
+          ${list.name ? `<div class="add list-add" data-list="${list.name}"><span>&times;</span></div>` : ''}
+        </section>
+      `)
+    });
+  }
 
   toggleCompletedVisibility(e) {
     if (this.settings.completedVisibility === 'show') {

@@ -4,5 +4,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const thngs = new Thngs();
 
   thngs.buildNav();
-  // thngs.buildBoard();
 });

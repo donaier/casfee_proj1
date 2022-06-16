@@ -17,8 +17,6 @@ export default class Thngs {
       ]
     })
 
-    this.boards = null;
-
     // this.activeBoard = this.boards.default;
     // this.ordering = document.querySelector('#ordering')?.value;
     // this.lists = [];
@@ -38,15 +36,23 @@ export default class Thngs {
 
     if (response.ok) {
       this.boards = await response.json();
+      this.activeBoard = this.boards.find((board) => board.default);
     }
 
     this.painter.paintNav(this.boards);
     this.painter.nav.addEventListener('click', this.switchBoard.bind(this));
+
+    this.buildBoard();
   }
 
-  buildBoard() {
-    // this.lists = getLists(this.activeBoard, this.ordering);
-    // this.painter.paintBoard(this.lists);
+  async buildBoard() {
+    const response = await fetch(`/${this.activeBoard._id}/lists`);
+
+    if (response.ok) {
+      this.lists = await response.json();
+    }
+
+    this.painter.paintBoard(this.lists);
 
     // document.querySelectorAll('.add.list-add').forEach(addBtn =>
     //   addBtn.addEventListener('click', (e) => {
@@ -62,7 +68,7 @@ export default class Thngs {
       document.querySelectorAll('nav button.active').forEach(btn => btn.classList.remove('active'));
       e.target.classList.add('active');
 
-      this.activeBoard = e.target.innerText;
+      this.activeBoard = this.boards.find((board) => board.name === e.target.innerText);
       this.buildBoard();
     }
   }
