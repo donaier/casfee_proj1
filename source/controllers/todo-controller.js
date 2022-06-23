@@ -33,11 +33,38 @@ export function getLists(request, response) {
 }
 
 export function createList(request, response) {
-  thngs.addlist(request.query.name, request.params.boardID, request.query.category, (error, newList) => {
+  thngs.addList(request.query.name, request.params.boardID, request.query.category, (error, newList) => {
     if (!error) {
       response.json(newList);
     } else {
       response.json(error);
     }
   })
+}
+
+export function getItems(request, response) {
+  thngs.getItems(request.params.listID, (error, items) => {
+    if (!error) {
+      response.json(items);
+    } else {
+      response.json(error);
+    }
+  })
+}
+
+export function createItem(request, response) {
+  thngs.addItem(
+    request.query.text,
+    request.params.listID,
+    false,
+    request.query.importance,
+    request.query.due_at,
+    (error, newItem) => {
+      if (!error) {
+        response.json(newItem);
+      } else {
+        response.json(error);
+      }
+    }
+  )
 }

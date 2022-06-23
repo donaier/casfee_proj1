@@ -11,15 +11,16 @@ export default class Thngs {
         {value: 'due_asc', label: 'DueDate ASC'},
         {value: 'due_desc', label: 'DueDate DESC'},
         {value: 'created_asc', label: 'CreationDate ASC'},
-        {value: 'created_desc', label: 'CreationDate DESC'},
+        {value: 'created_desc', label: 'CreationDate DESC', default: true},
         {value: 'importance_asc', label: 'Importance ASC'},
         {value: 'importance_desc', label: 'Importance DESC'},
       ]
     })
 
-    // this.activeBoard = this.boards.default;
-    // this.ordering = document.querySelector('#ordering')?.value;
-    // this.lists = [];
+    this.ordering = document.querySelector('#ordering')?.value;
+    this.lists = [];
+    this.items = [];
+
     // this.createForm = document.querySelector('form#create-item');
 
     // document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
@@ -46,13 +47,15 @@ export default class Thngs {
   }
 
   async buildBoard() {
-    const response = await fetch(`/${this.activeBoard._id}/lists`);
+    const lists = await fetch(`/${this.activeBoard._id}/lists`);
 
-    if (response.ok) {
-      this.lists = await response.json();
-    }
+    if (lists.ok) { this.lists = await lists.json(); }
 
     this.painter.paintBoard(this.lists);
+
+    this.lists.forEach(list => {
+      this.buildList(list._id);
+    });
 
     // document.querySelectorAll('.add.list-add').forEach(addBtn =>
     //   addBtn.addEventListener('click', (e) => {
@@ -61,6 +64,14 @@ export default class Thngs {
     //     document.querySelector('#new-item').showModal();
     //   })
     // );
+  }
+
+  async buildList(listID) {
+    const items = await fetch(`/${listID}/items`);
+
+    if (items.ok) { this.items[listID] = await items.json() }
+
+    console.log(this.items)
   }
 
   switchBoard(e) {

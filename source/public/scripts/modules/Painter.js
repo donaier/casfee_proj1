@@ -24,7 +24,7 @@ export default class Painter {
         completed items and sort them by
         <select name="ordering" id="ordering">
           ${this.settings.orderOptions?.map(orderOption =>
-            `<option value="${orderOption.value}">${orderOption.label}</option>`
+            `<option value="${orderOption.value}" ${orderOption.default ? 'selected' : ''}>${orderOption.label}</option>`
           ).join("")}
         </select>
       </p>
