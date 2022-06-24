@@ -18,18 +18,16 @@ export default class Thngs {
     })
 
     this.ordering = document.querySelector('#ordering')?.value;
+    this.createForm = document.querySelector('form#create-item');
     this.lists = [];
     this.items = [];
+    
+    document.querySelector('#ordering').addEventListener('change', this.setOrdering.bind(this));
+    document.querySelector('.add').addEventListener('click', () => {
+      // new list
+    });
 
-    // this.createForm = document.querySelector('form#create-item');
-
-    // document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
-    // document.querySelector('#ordering').addEventListener('change', this.setOrdering.bind(this));
-    // document.querySelector('.add').addEventListener('click', () => {
-    //   this.createForm.querySelector('input[name="list"').value = '';
-    //   document.querySelector('#new-item h3').textContent = '';
-    //   document.querySelector('#new-item').showModal();
-    // });
+    document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
   }
 
   async buildNav() {
@@ -57,13 +55,13 @@ export default class Thngs {
       this.buildList(list._id);
     });
 
-    // document.querySelectorAll('.add.list-add').forEach(addBtn =>
-    //   addBtn.addEventListener('click', (e) => {
-    //     this.createForm.querySelector('input[name="list"').value = e.target.closest('.add').dataset.list;
-    //     document.querySelector('#new-item h3').textContent = e.target.closest('.add').dataset.list;
-    //     document.querySelector('#new-item').showModal();
-    //   })
-    // );
+    document.querySelectorAll('.add.list-add').forEach(addBtn =>
+      addBtn.addEventListener('click', (e) => {
+        this.createForm.querySelector('input[name="listID"').value = e.target.closest('.add').dataset.list;
+        document.querySelector('#new-item h3').textContent = e.target.closest('.add').dataset.list;
+        document.querySelector('#new-item').showModal();
+      })
+    );
   }
 
   async buildList(listID) {
@@ -71,7 +69,7 @@ export default class Thngs {
 
     if (items.ok) { this.items[listID] = await items.json() }
 
-    console.log(this.items)
+    this.painter.paintList(listID, this.items[listID]);
   }
 
   switchBoard(e) {
@@ -84,29 +82,32 @@ export default class Thngs {
     }
   }
 
-  // setOrdering(e) {
-  //   this.ordering = e.target.value;
-  //   this.buildBoard();
-  // }
+  setOrdering(e) {
+    this.ordering = e.target.value;
+    this.buildBoard();
+  }
 
   // // item creation
-  // createItem(e) {
-  //   if (this.createForm.querySelector('input[type="text"]').value.trim()) {
-  //     const data = new FormData(this.createForm);
-  //     const newItem = {
-  //       board: this.board,
-  //       list: data.get('list'),
-  //       item: {
-  //         text: data.get('text'),
-  //         due_at: data.get('due_at'),
-  //         importance: data.get('importance')
-  //       }
-  //     };
+  async createItem(e) {
+    if (this.createForm.querySelector('input[type="text"]').value.trim()) {
+      const formData = new FormData(this.createForm);
 
-  //     // save newItem somehow :) and then maybe buildBoard() again
-  //   } else {
-  //     e.preventDefault();
-  //     this.createForm.classList.add('invalid');
-  //   }
-  // }
+      const newItem = {
+        listID: formData.get('listID'),
+        text: formData.get('text'),
+        due_at: formData.get('due_at'),
+        importance: formData.get('importance')
+      };
+      const urlparams = new URLSearchParams(newItem);
+      const createdItem = await fetch(`/${formData.get('listID')}/items?${urlparams}`, {method: 'post'});
+
+      if(createdItem.ok) {
+        this.buildBoard();
+      }
+
+    } else {
+      e.preventDefault();
+      this.createForm.classList.add('invalid');
+    }
+  }
 }
