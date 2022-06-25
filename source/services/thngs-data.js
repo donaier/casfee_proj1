@@ -52,6 +52,12 @@ class ThngsData {
     })
   }
 
+  completeItem(id, callback) {
+    this.dbItems.update({_id: id}, { $set: { completed: 'true' }}, {}, (error) => {
+      callback(error);
+    })
+  }
+
 }
 
 export default new ThngsData();

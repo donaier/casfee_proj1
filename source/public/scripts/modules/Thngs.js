@@ -27,6 +27,7 @@ export default class Thngs {
 
     document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
     document.querySelector('#new-list button[type="submit"]').addEventListener('click', this.createList.bind(this));
+    document.querySelector('.lists').addEventListener('click', Thngs.completeItem.bind(this));
   }
 
   async buildNav() {
@@ -94,6 +95,22 @@ export default class Thngs {
   setOrdering(e) {
     this.ordering = e.target.value;
     this.buildBoard();
+  }
+
+  static async completeItem(e) {
+    if (
+      e.target.closest('li')
+      &&
+      e.target.closest('li').classList.contains('actual-todo-item')
+      &&
+      e.target.closest('li').dataset.completed === 'false'
+    ) {
+      const isCompleted = await fetch(`/complete/${e.target.dataset.id}`);
+
+      if (isCompleted.ok) {
+        e.target.closest('li').dataset.completed = true;
+      }
+    }
   }
 
   // list creation

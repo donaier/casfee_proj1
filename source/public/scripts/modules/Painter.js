@@ -69,7 +69,13 @@ export default class Painter {
     this.listContainer.querySelector(`#list-${listID}`).insertAdjacentHTML('beforeend', `
       <ul>
       ${items.map(item =>
-        `<li data-importance="${item.importance}" data-due-at="${item.dueAt}" ${item.completed ? 'data-completed="true"' : ''}>
+        `<li
+          class="actual-todo-item"
+          data-importance="${item.importance}"
+          data-due-at="${item.dueAt}"
+          data-id="${item._id}"
+          data-completed="${item.completed}"
+        >
           ${item.text}${item.dueAt ? `<span>${item.dueAt}</span>` : ''}
         </li>`
       ).join("")}

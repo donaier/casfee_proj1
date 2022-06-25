@@ -15,10 +15,10 @@ main section ul {
         opacity: .9 !important; // i stand by that !important
       }
     }
-    &[data-completed] {
+    &[data-completed="true"] {
       opacity: .6;
     }
-    &:hover::before, &[data-completed]::before {
+    &:hover::before, &[data-completed="true"]::before {
       background-color: var(--clrAccentDark);
     }
 
@@ -61,6 +61,6 @@ main section ul {
   }
 }
 
-main.completed-hidden li[data-completed] {
+main.completed-hidden li[data-completed="true"] {
   display: none;
 }

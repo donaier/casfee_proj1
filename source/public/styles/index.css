@@ -150,9 +150,9 @@ main section ul {
       box-shadow: 0 0 0.5rem 0.1rem var(--clrCompLight); }
       main section ul li:hover:after, main section ul li:hover span {
         opacity: .9 !important; }
-    main section ul li[data-completed] {
+    main section ul li[data-completed="true"] {
       opacity: .6; }
-    main section ul li:hover::before, main section ul li[data-completed]::before {
+    main section ul li:hover::before, main section ul li[data-completed="true"]::before {
       background-color: var(--clrAccentDark); }
     main section ul li:before {
       content: '';
@@ -193,7 +193,7 @@ main section ul {
       opacity: .25;
       transition: opacity .4s ease; }
 
-main.completed-hidden li[data-completed] {
+main.completed-hidden li[data-completed="true"] {
   display: none; }
 
 section.settings {

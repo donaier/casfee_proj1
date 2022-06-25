@@ -72,3 +72,13 @@ export function createItem(request, response) {
     }
   )
 }
+
+export function completeItem(request, response) {
+  thngs.completeItem(request.params.itemID, (error) => {
+    if (!error) {
+      response.json();
+    } else {
+      response.json(error);
+    }
+  })
+}
