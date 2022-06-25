@@ -31,7 +31,7 @@ class ThngsData {
     })
   }
 
-  addList(name, boardID, category, callback) {
+  addList(name, category, boardID, callback) {
     this.dbList.insert({name, boardID, category}, (error, newList) => {
       callback(error, newList);
     })

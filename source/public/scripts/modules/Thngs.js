@@ -19,15 +19,14 @@ export default class Thngs {
 
     this.ordering = document.querySelector('#ordering')?.value;
     this.createForm = document.querySelector('form#create-item');
+    this.createListForm = document.querySelector('form#create-list');
     this.lists = [];
     this.items = [];
     
     document.querySelector('#ordering').addEventListener('change', this.setOrdering.bind(this));
-    document.querySelector('.add').addEventListener('click', () => {
-      // new list
-    });
 
     document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
+    document.querySelector('#new-list button[type="submit"]').addEventListener('click', this.createList.bind(this));
   }
 
   async buildNav() {
@@ -55,10 +54,20 @@ export default class Thngs {
       this.buildList(list._id);
     });
 
+    document.querySelector('.add.board-add').dataset.board = this.activeBoard._id;
+    document.querySelector('.add.board-add').dataset.name = this.activeBoard.name;
+
+    // new list
+    document.querySelector('.add.board-add').addEventListener('click', (e) => {
+      this.createListForm.querySelector('input[name="boardID"').value = e.target.closest('.add').dataset.board;
+      document.querySelector('#new-list h3').textContent = e.target.closest('.add').dataset.name;
+      document.querySelector('#new-list').showModal();
+    });
+    // new item
     document.querySelectorAll('.add.list-add').forEach(addBtn =>
       addBtn.addEventListener('click', (e) => {
         this.createForm.querySelector('input[name="listID"').value = e.target.closest('.add').dataset.list;
-        document.querySelector('#new-item h3').textContent = e.target.closest('.add').dataset.list;
+        document.querySelector('#new-item h3').textContent = e.target.closest('.add').dataset.name;
         document.querySelector('#new-item').showModal();
       })
     );
@@ -87,7 +96,30 @@ export default class Thngs {
     this.buildBoard();
   }
 
-  // // item creation
+  // list creation
+  async createList(e) {
+    if (this.createListForm.querySelector('input[type="text"]').value.trim()) {
+      const formData = new FormData(this.createListForm);
+
+      const newList = {
+        boardID: formData.get('boardID'),
+        name: formData.get('name'),
+        category: formData.get('category')
+      }
+      const urlparams = new URLSearchParams(newList);
+      const createdList = await fetch(`/${formData.get('boardID')}/lists?${urlparams}`, {method: 'post'});
+
+      if (createdList.ok) {
+        this.buildBoard();
+        this.createListForm.reset();
+      }
+    } else {
+      e.preventDefault();
+      this.createListForm.classList.add('invalid');
+    }
+  }
+
+  // item creation
   async createItem(e) {
     if (this.createForm.querySelector('input[type="text"]').value.trim()) {
       const formData = new FormData(this.createForm);
@@ -103,8 +135,8 @@ export default class Thngs {
 
       if(createdItem.ok) {
         this.buildBoard();
+        this.createForm.reset();
       }
-
     } else {
       e.preventDefault();
       this.createForm.classList.add('invalid');

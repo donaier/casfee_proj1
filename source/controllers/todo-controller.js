@@ -33,7 +33,11 @@ export function getLists(request, response) {
 }
 
 export function createList(request, response) {
-  thngs.addList(request.query.name, request.params.boardID, request.query.category, (error, newList) => {
+  thngs.addList(
+    request.query.name,
+    request.query.category,
+    request.params.boardID,
+    (error, newList) => {
     if (!error) {
       response.json(newList);
     } else {

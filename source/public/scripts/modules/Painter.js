@@ -59,7 +59,7 @@ export default class Painter {
       this.listContainer.insertAdjacentHTML('beforeend', `
         <section id="list-${list._id}">
           ${ (list.category && list.name) ? `<h1><span>${list.category}</span>${list.name}</h1>` : '<h2></h2>' }
-          ${list.name ? `<div class="add list-add" data-list="${list._id}"><span>&times;</span></div>` : ''}
+          ${list.name ? `<div class="add list-add" data-list="${list._id}" data-name="${list.name}"><span>&times;</span></div>` : ''}
         </section>
       `)
     });
