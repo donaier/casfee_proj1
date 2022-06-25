@@ -8,6 +8,7 @@ main section ul {
     margin: .25rem .5rem;
     transition: box-shadow .4s ease;
     border-radius: 5px;
+    cursor: pointer;
 
     &:hover {
       box-shadow: 0 0 .5rem .1rem var(--clrCompLight);

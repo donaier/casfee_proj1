@@ -65,10 +65,41 @@ export default class Painter {
     });
   }
 
-  paintList(listID, items) {
+  paintList(listID, items, ordering) {
+    let orderedItems = [];
+    switch (ordering) {
+      case 'name_asc':
+          orderedItems = items.sort((a,b) => a.text < b.text ? -1 : 1)
+        break;
+      case 'name_desc':
+          orderedItems = items.sort((a,b) => a.text > b.text ? -1 : 1)
+        break;
+      case 'due_asc':
+          orderedItems = items.sort((a,b) => !a.dueAt || a.dueAt > b.dueAt ? 1 : -1);
+        break;
+      case 'due_desc':
+          orderedItems = items.sort((a,b) => !a.dueAt || a.dueAt < b.dueAt ? 1 : -1);
+        break;
+      case 'created_asc':
+          orderedItems = items.sort((a,b) => a.createdAt < b.createdAt ? -1 : 1);
+        break;
+      case 'created_desc':
+          orderedItems = items.sort((a,b) => a.createdAt > b.createdAt ? -1 : 1);
+        break;
+      case 'importance_asc':
+          orderedItems = items.sort((a,b) => a.importance < b.importance ? -1 : 1)
+        break;
+      case 'importance_desc':
+          orderedItems = items.sort((a,b) => a.importance > b.importance ? -1 : 1)
+        break;
+
+      default:
+        break;
+    }
+
     this.listContainer.querySelector(`#list-${listID}`).insertAdjacentHTML('beforeend', `
       <ul>
-      ${items.map(item =>
+      ${orderedItems.map(item =>
         `<li
           class="actual-todo-item"
           data-importance="${item.importance}"

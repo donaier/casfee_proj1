@@ -79,7 +79,7 @@ export default class Thngs {
 
     if (items.ok) { this.items[listID] = await items.json() }
 
-    this.painter.paintList(listID, this.items[listID]);
+    this.painter.paintList(listID, this.items[listID], this.ordering);
   }
 
   switchBoard(e) {

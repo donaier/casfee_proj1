@@ -145,7 +145,8 @@ main section ul {
     padding: .2rem 9rem .2rem 2rem;
     margin: .25rem .5rem;
     transition: box-shadow .4s ease;
-    border-radius: 5px; }
+    border-radius: 5px;
+    cursor: pointer; }
     main section ul li:hover {
       box-shadow: 0 0 0.5rem 0.1rem var(--clrCompLight); }
       main section ul li:hover:after, main section ul li:hover span {
