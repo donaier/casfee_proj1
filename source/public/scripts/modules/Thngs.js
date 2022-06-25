@@ -27,7 +27,7 @@ export default class Thngs {
 
     document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
     document.querySelector('#new-list button[type="submit"]').addEventListener('click', this.createList.bind(this));
-    document.querySelector('.lists').addEventListener('click', Thngs.completeItem.bind(this));
+    document.querySelector('.lists').addEventListener('click', this.handleItemClick.bind(this));
   }
 
   async buildNav() {
@@ -97,19 +97,26 @@ export default class Thngs {
     this.buildBoard();
   }
 
-  static async completeItem(e) {
-    if (
+  handleItemClick(e) {
+    if (e.target.classList.contains('edit-icon')) {
+      document.querySelector('#edit-item').showModal();
+      // fill form, save/update
+    } else if (
       e.target.closest('li')
       &&
       e.target.closest('li').classList.contains('actual-todo-item')
       &&
       e.target.closest('li').dataset.completed === 'false'
     ) {
-      const isCompleted = await fetch(`/complete/${e.target.dataset.id}`);
+      Thngs.completeItem(e.target.closest('li'))
+    }
+  }
 
-      if (isCompleted.ok) {
-        e.target.closest('li').dataset.completed = true;
-      }
+  static async completeItem(item) {
+    const isCompleted = await fetch(`/complete/${item.dataset.id}`);
+
+    if (isCompleted.ok) {
+     item.dataset.completed = true;
     }
   }
 

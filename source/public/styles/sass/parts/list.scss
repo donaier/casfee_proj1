@@ -59,6 +59,18 @@ main section ul {
       opacity: .25;
       transition: opacity .4s ease;
     }
+
+    img.edit-icon {
+      position: relative;
+      top: 1px;
+      height: .9rem;
+      margin-left: 2rem;
+
+      &:hover {
+        box-shadow: 0 0 0.5rem 0.1rem var(--clrCompLight);
+        border-radius: 50%;
+      }
+    }
   }
 }
 

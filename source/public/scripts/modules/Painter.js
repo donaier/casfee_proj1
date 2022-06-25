@@ -108,6 +108,7 @@ export default class Painter {
           data-completed="${item.completed}"
         >
           ${item.text}${item.dueAt ? `<span>${item.dueAt}</span>` : ''}
+          <img src="/assets/edit.svg" class="edit-icon">
         </li>`
       ).join("")}
       </ul>
