@@ -1,7 +1,7 @@
-import Thngs from "./modules/Thngs.js"
+import CtrlThngs from "./modules/CtrlThngs.js"
 
 document.addEventListener("DOMContentLoaded", () => {
-  const thngs = new Thngs();
+  const ctrlThngs = new CtrlThngs();
 
-  thngs.buildNav();
+  ctrlThngs.initialize();
 });
