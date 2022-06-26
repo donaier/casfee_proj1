@@ -1,6 +1,9 @@
 {
   "extends": "stylelint-config-standard",
   "rules": {
-    "indentation": [4]
+    "indentation": [2],
+    "number-leading-zero": "never",
+    "rule-empty-line-before": ["always", {"ignore": ["inside-block"]}],
+    "custom-property-pattern": "^[a-z][a-zA-Z0-9]+$"
   }
 }
