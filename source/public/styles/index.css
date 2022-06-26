@@ -233,11 +233,11 @@ main section ul li img.edit-icon {
   top: 1px;
   height: .9rem;
   margin-left: 2rem;
+  opacity: .2;
 }
 
 main section ul li img.edit-icon:hover {
-  box-shadow: 0 0 .5rem .1rem var(--clrCompLight);
-  border-radius: 50%;
+  opacity: .8;
 }
 
 main.completed-hidden li[data-completed="true"] {
