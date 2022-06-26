@@ -1,27 +1,13 @@
-{"text":"3","listID":"GOQ9tVvXHxBFVBep","completed":false,"importance":"3","dueAt":"2022-06-03","createdAt":1656164166772,"_id":"34XKbEYhgrOj6Oi5"}
-{"text":"123","listID":"C4ScE6iyoUy5x2Y0","completed":false,"importance":"1","dueAt":"","createdAt":1656264670188,"_id":"85HyM8WcbIol2245"}
-{"text":"4","listID":"GOQ9tVvXHxBFVBep","completed":false,"importance":"4","dueAt":"2022-06-04","createdAt":1656164153241,"_id":"8emysP3PraI16oiS"}
-{"text":"123456","listID":"jId2H4HXizj1559J","completed":"true","importance":"1","dueAt":"","createdAt":1656167571022,"_id":"9HKkZzBGof8O0bB1"}
-{"text":"1234","listID":"jId2H4HXizj1559J","completed":"true","importance":"2","dueAt":"","createdAt":1656247559169,"_id":"9jr42RPKkK95kXIR"}
-{"text":"8888811111","listID":"jBgcmQVRxWw4g3Gg","completed":"true","importance":"5","dueAt":"2022-06-30","createdAt":1656263946726,"_id":"BhsSSAxePI33xR2R"}
-{"text":"123","listID":"jId2H4HXizj1559J","completed":"true","importance":"1","dueAt":"","createdAt":1656167255552,"_id":"EJFmCjRNsNa0PWNV"}
-{"text":"123456","listID":"jId2H4HXizj1559J","completed":"true","importance":"1","dueAt":"","createdAt":1656167419563,"_id":"GQ7W6ZeR7htrMBoq"}
-{"text":"edit","listID":"5Pr1AyNtAlL4CeY6","completed":"true","importance":"1","dueAt":"","createdAt":1656166322431,"_id":"GWIXQrbAJpHfIpIh"}
-{"text":"123","listID":"YEdmH566SEZGPQ2c","completed":false,"importance":"1","dueAt":"","createdAt":1656264687447,"_id":"KCNmfLZflB3T8tbd"}
-{"text":"4","listID":"GOQ9tVvXHxBFVBep","completed":"true","importance":"4","dueAt":"","createdAt":1656161554193,"_id":"SNvW5dd2mIG4KrYc"}
-{"text":"date sorting","listID":"5Pr1AyNtAlL4CeY6","completed":"true","importance":"1","dueAt":"","createdAt":1656164194976,"_id":"cRcjvLb0h9O8rfWF"}
-{"text":"list add ?","listID":"5Pr1AyNtAlL4CeY6","completed":"true","importance":"3","dueAt":"","createdAt":1656093178761,"_id":"cVdbQy6vHjgEuMOi"}
-{"text":"styles","listID":"5Pr1AyNtAlL4CeY6","completed":false,"importance":"4","dueAt":"","createdAt":1656093198266,"_id":"eNAFtSJW7LRYq5fa"}
-{"text":"88","listID":"jBgcmQVRxWw4g3Gg","completed":false,"importance":"1","dueAt":"","createdAt":1656263941564,"_id":"gd8K1GwdOUgZfAYi"}
-{"text":"333","listID":"8hsM8q5zOQg5LUOW","completed":false,"importance":"1","dueAt":"","createdAt":1656264521259,"_id":"ikuhpuUYuDrU5YEN"}
-{"text":"1","listID":"GOQ9tVvXHxBFVBep","completed":false,"importance":"1","dueAt":"2022-06-01","createdAt":1656164138788,"_id":"nK6toLjHGThCS9Ef"}
-{"text":"5","listID":"GOQ9tVvXHxBFVBep","completed":false,"importance":"5","dueAt":"2022-06-05","createdAt":1656164158283,"_id":"oKpQzYKAs7rUAgZ1"}
-{"text":"123456","listID":"jId2H4HXizj1559J","completed":"true","importance":"1","dueAt":"","createdAt":1656167415558,"_id":"puSNhkMqWjPuphDo"}
-{"text":"ordering initial (maybe sorting will fix that","listID":"5Pr1AyNtAlL4CeY6","completed":"true","importance":"3","dueAt":"","createdAt":1656093172664,"_id":"q8Em6lEPtZ92qIdH"}
-{"text":"sorting","listID":"5Pr1AyNtAlL4CeY6","completed":"true","importance":"3","dueAt":"","createdAt":1656093149408,"_id":"q9kVI2QDME3QehnW"}
-{"text":"2","listID":"GOQ9tVvXHxBFVBep","completed":"true","importance":"2","dueAt":"2022-06-02","createdAt":1656164147279,"_id":"rag7DSkgqqskgC2G"}
-{"text":"reset form","listID":"5Pr1AyNtAlL4CeY6","completed":"true","importance":"3","dueAt":"","createdAt":1656093160668,"_id":"thbjwbwbfhOR30Zk"}
-{"text":"completeing","listID":"5Pr1AyNtAlL4CeY6","completed":"true","importance":"3","dueAt":"","createdAt":1656093157462,"_id":"u15VaDfE07vjqCdi"}
-{"text":"123454321 neuer text","listID":"jId2H4HXizj1559J","completed":"true","importance":"3","dueAt":"2022-06-30","createdAt":1656167568068,"_id":"v5ZphfaVuwj0PLie"}
-{"text":"something","listID":"jId2H4HXizj1559J","completed":"true","importance":"3","dueAt":"2022-06-22","createdAt":1656161453480,"_id":"vHtwiW1Qon1a1OAq"}
-{"text":"3","listID":"GOQ9tVvXHxBFVBep","completed":true,"importance":"3","dueAt":"2022-06-22","createdAt":1656161548156,"_id":"vS57OnU6s3FlEnmq"}
+{"text":"111","listID":"L0AS9UUa3HCLCQGU","completed":false,"importance":"1","dueAt":"2022-07-01","createdAt":1656265073566,"_id":"0TEEbifHKFMkWDEX"}
+{"text":"555","listID":"L0AS9UUa3HCLCQGU","completed":false,"importance":"5","dueAt":"2022-07-05","createdAt":1656265100806,"_id":"2L2bxDhtHn7aKt7Y"}
+{"text":"333","listID":"L0AS9UUa3HCLCQGU","completed":false,"importance":"3","dueAt":"2022-07-03","createdAt":1656265088345,"_id":"4aii25JEHn1kYRks"}
+{"text":"wäre schon gut zu haben","listID":"qnKWh5c3ymG947Q1","completed":false,"importance":"2","dueAt":"","createdAt":1656265167530,"_id":"BNJp2cojFj7tXR28"}
+{"text":"wenns dann noch zeit hat","listID":"qnKWh5c3ymG947Q1","completed":false,"importance":"1","dueAt":"","createdAt":1656265146330,"_id":"FXEOP9qDRxTTTgO9"}
+{"text":"besser als nächstes machen","listID":"qnKWh5c3ymG947Q1","completed":false,"importance":"4","dueAt":"","createdAt":1656265195268,"_id":"JcQpUKMtc9JylvkZ"}
+{"text":"444","listID":"L0AS9UUa3HCLCQGU","completed":false,"importance":"4","dueAt":"2022-07-04","createdAt":1656265094337,"_id":"Lw1WoXZByJ9iV8ol"}
+{"text":"222","listID":"L0AS9UUa3HCLCQGU","completed":false,"importance":"2","dueAt":"2022-07-02","createdAt":1656265081599,"_id":"NGo6St52elfwIW3v"}
+{"text":"Gabelservice","listID":"C0lSb6wPgiT0Zlp8","completed":false,"importance":"4","dueAt":"","createdAt":1656265052280,"_id":"TF6fN7C8uz9JC4SI"}
+{"text":"ziemlich wichtig","listID":"qnKWh5c3ymG947Q1","completed":false,"importance":"3","dueAt":"2022-07-01","createdAt":1656265182727,"_id":"bHDNK2NPrP9XQOJo"}
+{"text":"das sollte das erste sein zum wahrnehmen","listID":"qnKWh5c3ymG947Q1","completed":false,"importance":"5","dueAt":"","createdAt":1656265158235,"_id":"cuEUnmPUrmqOjcZV"}
+{"text":"Packträger montieren","listID":"PxkgyuMtbU3faU0s","completed":false,"importance":"3","dueAt":"2022-06-30","createdAt":1656265009206,"_id":"nEv14RETTmlfrogu"}
+{"text":"lichter aufladen","listID":"PxkgyuMtbU3faU0s","completed":false,"importance":"2","dueAt":"","createdAt":1656264992430,"_id":"udv1OCYlv3d38UpW"}
