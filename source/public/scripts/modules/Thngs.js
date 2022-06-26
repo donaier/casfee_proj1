@@ -19,14 +19,16 @@ export default class Thngs {
 
     this.ordering = document.querySelector('#ordering')?.value;
     this.createForm = document.querySelector('form#create-item');
+    this.editForm =  document.querySelector('form#edit-item');
     this.createListForm = document.querySelector('form#create-list');
     this.lists = [];
     this.items = [];
     
     document.querySelector('#ordering').addEventListener('change', this.setOrdering.bind(this));
 
-    document.querySelector('#new-item button[type="submit"]').addEventListener('click', this.createItem.bind(this));
-    document.querySelector('#new-list button[type="submit"]').addEventListener('click', this.createList.bind(this));
+    this.createForm.querySelector('button[type="submit"]').addEventListener('click', this.createItem.bind(this));
+    this.createListForm.querySelector('button[type="submit"]').addEventListener('click', this.createList.bind(this));
+    this.editForm.querySelector('button[type="submit"]').addEventListener('click', this.editItem.bind(this))
     document.querySelector('.lists').addEventListener('click', this.handleItemClick.bind(this));
   }
 
@@ -61,15 +63,15 @@ export default class Thngs {
     // new list
     document.querySelector('.add.board-add').addEventListener('click', (e) => {
       this.createListForm.querySelector('input[name="boardID"').value = e.target.closest('.add').dataset.board;
-      document.querySelector('#new-list h3').textContent = e.target.closest('.add').dataset.name;
-      document.querySelector('#new-list').showModal();
+      document.querySelector('#new-list-dialog h3').textContent = `${e.target.closest('.add').dataset.name}:newList`;
+      document.querySelector('#new-list-dialog').showModal();
     });
     // new item
     document.querySelectorAll('.add.list-add').forEach(addBtn =>
       addBtn.addEventListener('click', (e) => {
         this.createForm.querySelector('input[name="listID"').value = e.target.closest('.add').dataset.list;
-        document.querySelector('#new-item h3').textContent = e.target.closest('.add').dataset.name;
-        document.querySelector('#new-item').showModal();
+        document.querySelector('#new-item-dialog h3').textContent = e.target.closest('.add').dataset.name;
+        document.querySelector('#new-item-dialog').showModal();
       })
     );
   }
@@ -99,8 +101,15 @@ export default class Thngs {
 
   handleItemClick(e) {
     if (e.target.classList.contains('edit-icon')) {
-      document.querySelector('#edit-item').showModal();
+      const itemLi = e.target.closest('li');
       // fill form, save/update
+      this.editForm.querySelector('input[name="listID"]').value = itemLi.dataset.id;
+      this.editForm.querySelector('input[name="itemID"]').value = itemLi.dataset.id;
+      this.editForm.querySelector('input[name="text"]').value = itemLi.dataset.text;
+      this.editForm.querySelector('input[name="due_at"]').value = itemLi.dataset.dueAt;
+      this.editForm.querySelector('input[name="importance"]').value = itemLi.dataset.importance;
+
+      document.querySelector('#edit-item-dialog').showModal();
     } else if (
       e.target.closest('li')
       &&
@@ -164,6 +173,29 @@ export default class Thngs {
     } else {
       e.preventDefault();
       this.createForm.classList.add('invalid');
+    }
+  }
+
+  async editItem(e) {
+    if (this.editForm.querySelector('input[type="text"]').value.trim()) {
+      const formData = new FormData(this.editForm);
+
+      const editedItem = {
+        listID: formData.get('listID'),
+        text: formData.get('text'),
+        due_at: formData.get('due_at'),
+        importance: formData.get('importance')
+      };
+      const urlparams = new URLSearchParams(editedItem);
+      const updatedItem = await fetch(`/edit/${formData.get('itemID')}/?${urlparams}`, {});
+
+      if(updatedItem.ok) {
+        this.buildBoard();
+        this.editForm.reset();
+      }
+    } else {
+      e.preventDefault();
+      this.editForm.classList.add('invalid');
     }
   }
 }

@@ -52,6 +52,13 @@ class ThngsData {
     })
   }
 
+  updateItem(id, text, dueAt, importance, callback) {
+    this.dbItems.update(
+      {_id: id}, { $set: { text, dueAt, importance }}, {}, (error) => {
+      callback(error);
+    })
+  }
+
   completeItem(id, callback) {
     this.dbItems.update({_id: id}, { $set: { completed: 'true' }}, {}, (error) => {
       callback(error);

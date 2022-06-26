@@ -102,6 +102,7 @@ export default class Painter {
       ${orderedItems.map(item =>
         `<li
           class="actual-todo-item"
+          data-text="${item.text}"
           data-importance="${item.importance}"
           data-due-at="${item.dueAt}"
           data-id="${item._id}"

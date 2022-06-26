@@ -73,6 +73,22 @@ export function createItem(request, response) {
   )
 }
 
+export function editItem(request, response) {
+  thngs.updateItem(
+    request.params.itemID,
+    request.query.text,
+    request.query.due_at,
+    request.query.importance,
+    (error, updatedItem) => {
+      if (!error) {
+        response.json(updatedItem);
+      } else {
+        response.json(error);
+      }
+    }
+  )
+}
+
 export function completeItem(request, response) {
   thngs.completeItem(request.params.itemID, (error) => {
     if (!error) {
